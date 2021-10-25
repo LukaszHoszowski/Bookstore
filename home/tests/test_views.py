@@ -26,4 +26,4 @@ def test_homepage_template(get_homepage_response):
 
 def test_homepage_contains_correct_html(get_homepage_response):
 
-    assert 'Welcome to bookstore' in get_homepage_response.content.decode("UTF-8")
+    assert 'Profile' in get_homepage_response.content.decode("UTF-8")
