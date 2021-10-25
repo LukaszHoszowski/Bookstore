@@ -10,7 +10,8 @@ pytest = "==6.2.5"
 pytest-django = "==4.4.0"
 pytest-cov = "==3.0.0"
 django-crispy-forms = "==1.13.0"
-crispy-bootstrap5 = "*"
+crispy-bootstrap5 = "==0.6"
+django-allauth = "==0.45.0"
 
 [dev-packages]
 

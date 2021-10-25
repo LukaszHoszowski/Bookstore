@@ -32,7 +32,6 @@ def test_signup_contains_correct_html(get_signup_response):
 def test_signup_form(get_signup_response):
     form = get_signup_response.context.get('form')
     assert isinstance(form, CustomUserCreationForm)
-    print(get_signup_response)
-    # assert 'csrfmiddlewaretoken' in get_signup_response
+    assert 'csrftoken' in get_signup_response.cookies
 
 
