@@ -1,5 +1,5 @@
 from django.views import generic
 
 
-class LogoutView(generic.TemplateView):
+class AboutView(generic.TemplateView):
     template_name = "static_pages/about.html"

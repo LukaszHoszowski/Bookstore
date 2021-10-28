@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # local
     "home.apps.HomeConfig",
     "accounts.apps.AccountsConfig",
+    "static_pages.apps.StaticPagesConfig",
 ]
 
 MIDDLEWARE = [

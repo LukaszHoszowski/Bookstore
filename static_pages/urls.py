@@ -1,8 +1,8 @@
 from django.urls import path
-from accounts import views
+from static_pages import views
 
 app_name = 'static_pages'
 
 urlpatterns = [
-    path("", views.LogoutView.as_view(), name="logout"),
+    path("about/", views.AboutView.as_view(), name="about"),
 ]
