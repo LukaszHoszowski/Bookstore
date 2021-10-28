@@ -7,19 +7,26 @@ services:
       volumes:
          - .:/code
       ports:
-         - 8000:8000
+         - "8000:8000"
       depends_on:
          - db
       restart: "on-failure"
       env_file:
-         ./.env
+         - ./.env
+      environment:
+         - "DJANGO_SECRET_KEY=django-insecure-v$$gu1xz!n0jejrr_@qvnu&z%33$$#hnp%mkfs3^%a1y$$a$$*#&)_"
+         - "DJANGO_DEBUG=True"
+         - "DATABASE_URL=postgres://postgres:postgres@db:5432/postgres"
 
    db:
       image: library/postgres:14-alpine
       volumes:
          - postgres_data:/var/lib/postgresql/data/
       env_file:
-         ./.env.db
+         - ./.env.db
+      environment:
+         - "POSTGRES_HOST_AUTH_METHOD=trust"
+
 
 volumes:
    postgres_data:
