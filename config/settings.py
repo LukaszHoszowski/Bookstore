@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "accounts.apps.AccountsConfig",
     "static_pages.apps.StaticPagesConfig",
+    "books.apps.BooksConfig"
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # User
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home:home'
-LOGOUT_REDIRECT_URL = 'accounts:logout'
+# LOGOUT_REDIRECT_URL = 'accounts:logout2'
 
 # Crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
@@ -157,14 +158,13 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
                            'allauth.account.auth_backends.AuthenticationBackend',
                            ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_LOGOUT_REDIRECT_URL = LOGOUT_REDIRECT_URL
+ACCOUNT_LOGOUT_REDIRECT_URL = 'accounts:logout2'
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
-
-
 # ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # ACCOUNT_EMAIL_REQUIRED = True
+DEFAULT_FROM_EMAIL = 'DUPA@dupa.pl'
