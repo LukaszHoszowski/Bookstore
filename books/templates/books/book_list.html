@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    {% for book in object_list %}
-        <div><h2><a href="">{{ book.title }}</a></h2></div>
+    {% for book in book_list %}
+        <div><h2>
+            <a href="{% url 'books:book_detail' book.uuid %}">{{ book.title }}</a>
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        </h2></div>
+    {% empty %}
+        <p><a href="">Add book</a></p>
     {% endfor %}
 {% endblock %}
