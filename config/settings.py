@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from environs import Env
 import django.contrib.staticfiles.finders
+import socket  # only if you haven't already imported this
 env = Env()
 env.read_env()
 
@@ -29,6 +30,10 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG')
+
+if DEBUG:
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[:-1] + '1' for ip in ips] + ['127.0.0.1', '10.0.2.2']
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '.herokuapp.com']
 
@@ -49,6 +54,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'debug_toolbar',
 
     # local
     "home.apps.HomeConfig",
@@ -58,6 +64,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
